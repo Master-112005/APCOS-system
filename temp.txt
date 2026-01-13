@@ -7,3 +7,4 @@ implement security validation tests 1299559089
 implement hardware integration tests 976940261
 add default configuration schema 1424284240
 add access control module 1025501308
+implement lifecycle manager 1104208312
