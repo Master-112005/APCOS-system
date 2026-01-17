@@ -12,3 +12,4 @@ implement ipc communication layer 1928661889
 implement security validation tests 540545097
 implement challenge logic 202380669
 implement identity resolver 1828385720
+add capability detector 1951416140
