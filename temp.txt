@@ -15,3 +15,4 @@ implement identity resolver 1828385720
 add capability detector 1951416140
 implement transcription worker 586103180
 add command router 39082297
+implement explanation engine 1884313147
