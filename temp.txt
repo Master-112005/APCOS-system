@@ -23,3 +23,4 @@ add deterministic replay certification tests 1636795489
 add bootstrap configuration loader 1448690902
 add secure storage manager 190044383
 implement runtime lifecycle manager 803901998
+implement startup validator 366399606
