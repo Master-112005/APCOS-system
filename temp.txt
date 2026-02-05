@@ -29,3 +29,4 @@ add logging configuration bootstrap 1997884517
 add bootstrap configuration loader 1133449271
 implement challenge logic 1761772515
 add audio interface layer 1550330642
+implement hardware integration tests 1608242487
