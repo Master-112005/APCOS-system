@@ -41,3 +41,4 @@ add reasoning engine 2138049551
 implement voice controller 1033987441
 implement task store memory layer 415263369
 implement wake word engine 614866936
+add proactive controller 1684627498
