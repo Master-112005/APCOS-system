@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "generated_for_release": "1.0.0-rc.1",
+  "models": [
+    {
+      "id": "asr_realtime_small",
+      "component": "voice_asr_real",
+      "backend": "stub_fallback",
+      "size_profile": "SMALL",
+      "runtime_module": "voice.model_manager.ModelManager",
+      "enabled": true
+    },
+    {
+      "id": "asr_realtime_tiny",
+      "component": "voice_asr_real",
+      "backend": "stub_fallback",
+      "size_profile": "TINY",
+      "runtime_module": "voice.model_manager.ModelManager",
+      "enabled": true
+    },
+    {
+      "id": "asr_stub_pipeline",
+      "component": "voice_asr_stub",
+      "backend": "deterministic_stub",
+      "runtime_module": "voice.asr_engine.ASREngine",
+      "enabled": true
+    },
+    {
+      "id": "tts_stub_pipeline",
+      "component": "voice_tts_stub",
+      "backend": "deterministic_stub",
+      "runtime_module": "voice.tts_engine.TTSEngine",
+      "enabled": true
+    },
+    {
+      "id": "reasoning_stub_llm",
+      "component": "cognition_reasoning",
+      "backend": "deterministic_stub",
+      "runtime_module": "core.cognition.reasoning_engine.StubLLMClient",
+      "enabled": true
+    }
+  ]
+}

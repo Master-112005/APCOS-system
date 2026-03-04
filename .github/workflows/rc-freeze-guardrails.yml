@@ -1,0 +1,74 @@
+name: RC Freeze Guardrails
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+
+jobs:
+  protected-contract-freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Enforce RC1 protected paths
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          EVENT_PATH: ${{ github.event_path }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import pathlib
+          import subprocess
+          import sys
+
+          base_sha = os.environ.get("BASE_SHA", "").strip()
+          head_sha = os.environ.get("HEAD_SHA", "").strip()
+          event_path = os.environ.get("EVENT_PATH", "").strip()
+
+          if not base_sha or not head_sha or not event_path:
+              print("Missing PR context; failing closed.")
+              sys.exit(1)
+
+          event_data = json.loads(pathlib.Path(event_path).read_text(encoding="utf-8"))
+          labels = {
+              str(item.get("name", "")).strip()
+              for item in event_data.get("pull_request", {}).get("labels", [])
+          }
+
+          result = subprocess.run(
+              ["git", "diff", "--name-only", f"{base_sha}..{head_sha}"],
+              check=True,
+              capture_output=True,
+              text=True,
+          )
+          changed_files = [line.strip() for line in result.stdout.splitlines() if line.strip()]
+
+          protected = []
+          for path in changed_files:
+              normalized = path.replace("\\", "/")
+              if normalized == "os/src/ipc.rs":
+                  protected.append(normalized)
+                  continue
+              if normalized.startswith("os/src/runtime/"):
+                  protected.append(normalized)
+                  continue
+              if normalized == "os/src/energy_manager.rs":
+                  protected.append(normalized)
+                  continue
+              if normalized == "services/ipc/rust_bridge.py":
+                  protected.append(normalized)
+                  continue
+
+          if protected and "SECURITY_PATCH" not in labels:
+              print("RC1 freeze violation: protected files changed without SECURITY_PATCH label.")
+              for item in protected:
+                  print(f" - {item}")
+              sys.exit(1)
+
+          print("RC1 freeze guardrails passed.")
+          PY

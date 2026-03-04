@@ -1,0 +1,16 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Pytest
+.pytest_cache/
+
+# Hypothesis
+.hypothesis/
+
+# Env files
+.env
+
+# OS
+.DS_Store
+Thumbs.db

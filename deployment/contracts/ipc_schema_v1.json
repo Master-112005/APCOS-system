@@ -1,0 +1,30 @@
+{
+  "envelope": {
+    "correlation_id_type": "non_empty_string",
+    "payload_type": "object",
+    "required_fields": [
+      "message_type",
+      "timestamp",
+      "correlation_id",
+      "payload"
+    ],
+    "timestamp_type": "integer_ms"
+  },
+  "max_message_bytes": 65536,
+  "message_types": [
+    "EVENT",
+    "STATE_UPDATE",
+    "AUTH_REQUEST",
+    "AUTH_RESULT",
+    "TRANSITION_VALIDATE",
+    "TRANSITION_RESULT",
+    "ENERGY_VALIDATE",
+    "ENERGY_RESULT",
+    "STORAGE_VALIDATE",
+    "STORAGE_RESULT",
+    "MEMORY_VALIDATE",
+    "MEMORY_RESULT"
+  ],
+  "schema_hash_sha256": "97073a4152cbdd5a61fc991b1ee21d3d9f1f8fff3e92187362cac588f5348d4c",
+  "schema_version": 1
+}

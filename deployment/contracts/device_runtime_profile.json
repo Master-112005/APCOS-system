@@ -1,0 +1,59 @@
+{
+  "contract_notice": "APCOS RELEASE CONTRACT - DO NOT MODIFY",
+  "runtime_profile": "APCOS-RC1",
+  "ipc_schema_version": 1,
+  "authority_stack": [
+    "identity",
+    "lifecycle",
+    "energy",
+    "storage",
+    "memory"
+  ],
+  "authority_model": {
+    "stateless_authority": true,
+    "fail_closed_validation": true,
+    "router_mutation_boundary": "python-command-router-only"
+  },
+  "energy_modes": [
+    "Strategic",
+    "Reduced",
+    "Silent"
+  ],
+  "energy_execution_types": [
+    "LLM",
+    "Proactive",
+    "BackgroundTask",
+    "CriticalReminder",
+    "Voice"
+  ],
+  "voice_pipeline": {
+    "wakeword_required": true,
+    "lazy_model_loading": true,
+    "model_registry_manifest": "models/model_registry.json",
+    "voice_allowed_in_silent": true,
+    "heavy_cognition_allowed_in_silent": false
+  },
+  "ipc_runtime": {
+    "transport": "stdio-json",
+    "required_envelope_fields": [
+      "message_type",
+      "timestamp",
+      "correlation_id",
+      "payload"
+    ],
+    "max_message_bytes": 65536,
+    "schema_artifact": "deployment/contracts/ipc_schema_v1.json"
+  },
+  "boot_characteristics": {
+    "deterministic_startup": true,
+    "os_supervisor_first": true,
+    "python_runtime_after_ipc_ready": true,
+    "initial_energy_snapshot_required": true
+  },
+  "source_of_truth": {
+    "authority_snapshot": "deployment/contracts/authority_snapshot.json",
+    "ipc_schema": "deployment/contracts/ipc_schema_v1.json",
+    "model_registry": "models/model_registry.json",
+    "validation_index": "tests/validation/harness_map.md"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "contract_notice": "APCOS RELEASE CONTRACT - DO NOT MODIFY",
+  "device_entry_profile": "APCOS-RC1",
+  "ipc_schema_version": 1,
+  "boot_mode": "supervised_runtime",
+  "authority_stack": [
+    "identity",
+    "lifecycle",
+    "energy",
+    "storage",
+    "memory"
+  ],
+  "startup_sequence": [
+    "os_core",
+    "ipc_ready",
+    "python_runtime",
+    "voice_pipeline",
+    "cognition_ready"
+  ],
+  "voice_activation": {
+    "wakeword_required": true,
+    "voice_allowed_in_silent": true,
+    "lazy_model_loading": true
+  },
+  "cognition_readiness": {
+    "requires_initial_energy_handshake": true,
+    "requires_ipc_bridge_ready": true,
+    "requires_authority_stack_ready": true
+  },
+  "runtime_characteristics": {
+    "stateless_authority": true,
+    "deterministic_startup": true,
+    "ipc_transport": "stdio-json"
+  },
+  "source_of_truth": {
+    "authority_snapshot": "deployment/contracts/authority_snapshot.json",
+    "ipc_schema": "deployment/contracts/ipc_schema_v1.json",
+    "runtime_profile": "deployment/contracts/device_runtime_profile.json",
+    "validation_index": "tests/validation/harness_map.md"
+  }
+}

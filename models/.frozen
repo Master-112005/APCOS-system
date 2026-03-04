@@ -1,0 +1,8 @@
+APCOS RELEASE CONTRACT — DO NOT MODIFY
+Milestone: APCOS-RC1
+
+Frozen artifact:
+- model_registry.json
+
+Change policy:
+- Modifications are blocked during RC1 unless labeled SECURITY_PATCH.

@@ -1,0 +1,12 @@
+APCOS RELEASE CONTRACT — DO NOT MODIFY
+Milestone: APCOS-RC1
+
+Frozen artifacts:
+- authority_snapshot.json
+- ipc_schema_v1.json
+- model_registry.json (external reference under ../models)
+- harness_map.md (external reference under ../tests/validation)
+
+Change policy:
+- Any modification requires explicit SECURITY_PATCH governance approval.
+- Contract changes require schema/version bump outside RC1 freeze.

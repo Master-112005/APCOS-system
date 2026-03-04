@@ -1,0 +1,112 @@
+{
+  "energy": {
+    "decision_reason_codes": [
+      "BACKGROUND_BLOCKED_REDUCED",
+      "LLM_DOWNGRADED_REDUCED",
+      "LLM_BLOCKED_SILENT",
+      "PROACTIVE_BLOCKED_SILENT",
+      "BACKGROUND_BLOCKED_SILENT"
+    ],
+    "execution_types": [
+      "LLM",
+      "Proactive",
+      "BackgroundTask",
+      "CriticalReminder",
+      "Voice"
+    ],
+    "modes": [
+      "Strategic",
+      "Reduced",
+      "Silent"
+    ],
+    "thresholds": {
+      "battery_critical_percent": 10.0,
+      "battery_low_percent": 20.0,
+      "cpu_high_percent": 75.0,
+      "thermal_critical_celsius": 85.0,
+      "thermal_high_celsius": 75.0,
+      "thermal_recovery_cycles": 3.0
+    }
+  },
+  "identity": {
+    "policy_matrix": {
+      "Family": [
+        "CREATE_TASK",
+        "COMPLETE_TASK",
+        "STRATEGY"
+      ],
+      "Guest": [],
+      "Owner": [
+        "CREATE_TASK",
+        "COMPLETE_TASK",
+        "CANCEL_TASK",
+        "STRATEGY"
+      ]
+    },
+    "tiers": [
+      "Owner",
+      "Family",
+      "Guest"
+    ]
+  },
+  "ipc_schema_version": 1,
+  "lifecycle": {
+    "reason_codes": [
+      "ARCHIVED_TERMINAL",
+      "INVALID_TRANSITION",
+      "UNKNOWN_STATE"
+    ],
+    "states": [
+      "Pending",
+      "Completed",
+      "Archived"
+    ],
+    "valid_transitions": [
+      {
+        "from": "Pending",
+        "to": "Completed"
+      },
+      {
+        "from": "Pending",
+        "to": "Archived"
+      },
+      {
+        "from": "Completed",
+        "to": "Archived"
+      }
+    ]
+  },
+  "memory": {
+    "decision_reason_codes": [
+      "STORAGE_PERMISSION_REQUIRED",
+      "SILENT_MODE_MEMORY_RESTRICTED",
+      "ARCHIVED_REACTIVATION_DENIED",
+      "FINALIZE_REQUIRES_ARCHIVED_STATE",
+      "RETENTION_WINDOW_NOT_REACHED"
+    ],
+    "operations": [
+      "PromoteToActive",
+      "DemoteToDormant",
+      "ArchiveItem",
+      "FinalizeArchive",
+      "RetentionTrigger",
+      "VectorTierShift"
+    ]
+  },
+  "storage": {
+    "decision_reason_codes": [
+      "ENCRYPTION_METADATA_MISSING",
+      "RETENTION_DELETE_DENIED",
+      "ARCHIVED_STATE_IMMUTABLE",
+      "LLM_STORAGE_BLOCKED_RESTRICTED_ENERGY"
+    ],
+    "operations": [
+      "WriteTask",
+      "UpdateTask",
+      "ArchiveTask",
+      "DeleteTask",
+      "VectorWrite",
+      "VectorDelete"
+    ]
+  }
+}

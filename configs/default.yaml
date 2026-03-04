@@ -1,0 +1,40 @@
+memory:
+  storage:
+    backend: sqlite
+    path: ":memory:"
+  encryption:
+    enabled: true
+    mode: stub
+
+proactive:
+  confidence_threshold: 0.7
+  daily_limit: 3
+  silent_mode: false
+
+behavior:
+  overload_threshold: 8
+  goal_deviation_threshold: 0.6
+
+command_router:
+  min_confidence: 0.65
+  enable_challenge_gate: true
+
+calibration:
+  enabled: true
+  min_threshold: 0.5
+  max_threshold: 0.9
+  step_size: 0.05
+
+runtime:
+  cpu_threshold_percent: 75
+  memory_threshold_mb: 500
+  max_threads: 4
+  power_mode: NORMAL
+  model_downgrade_enabled: true
+  idle_unload_seconds: 300
+
+hardware:
+  battery_low_percent: 20
+  battery_critical_percent: 10
+  thermal_limit_celsius: 75
+  sleep_idle_seconds: 300
